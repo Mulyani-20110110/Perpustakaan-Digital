@@ -13,7 +13,7 @@
                 <button class="btn btn-success">Cari</button>
             </div>
             <div class="form-group mr-1">
-                <a class="btn btn-primary" href="{{ route('user.create') }}">Create</a>
+                <a class="btn btn-primary" href="{{ route('book.create') }}">Create</a>
             </div>
         </form>
     </div>
@@ -22,9 +22,10 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama</th>
-                    <th>Email</th>
-                    <th>Level</th>
+                    <th>Buku</th>
+                    <th>Pengarang</th>
+                    <th>No ISBN</th>
+                    <th>Tahun Terbit</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -32,12 +33,14 @@
             @foreach($rows as $row)
             <tr>
                 <td>{{ $no++ }}</td>
-                <td>{{ $row->nama_user }}</td>
-                <td>{{ $row->email }}</td>
-                <td>{{ $row->level }}</td>
+                <td>{{ $row->nama_book }}</td>
+                <td>{{ $row->nama_author }}</td>
+                <td>{{ $row->no_isbn }}</td>
+                <td>{{ $row->tahun_terbit }}</td>
+
                 <td>
-                    <a class="btn btn-sm btn-warning" href="{{ route('user.edit', $row) }}">Edit</a>
-                    <form method="POST" action="{{ route('user.destroy', $row) }}" style="display: inline-block;">
+                    <a class="btn btn-sm btn-warning" href="{{ route('book.edit', $row) }}">Edit</a>
+                    <form method="POST" action="{{ route('book.destroy', $row) }}" style="display: inline-block;">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data?')">Delete</button>
